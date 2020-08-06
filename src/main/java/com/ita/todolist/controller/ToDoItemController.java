@@ -1,11 +1,11 @@
 package com.ita.todolist.controller;
 
+import com.ita.todolist.dto.ToDoItemResponseDto;
 import com.ita.todolist.entity.ToDoItem;
+import com.ita.todolist.mapper.ToDoItemMapper;
 import com.ita.todolist.service.ToDoItemService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,4 +25,9 @@ public class ToDoItemController {
         return toDoItemService.getAllTodoItem();
     }
 
+    @PutMapping(path = "/{id}")
+    public ToDoItemResponseDto updateToDoItem(@PathVariable int id ,@RequestBody ToDoItem toDoItem){
+        ToDoItem newToDoItem = toDoItemService.updateToDoItem(toDoItem);
+        return ToDoItemMapper.entityToResponseDto(newToDoItem);
+    }
 }
