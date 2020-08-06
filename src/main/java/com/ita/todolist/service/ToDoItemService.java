@@ -12,5 +12,5 @@ import java.util.List;
 public interface ToDoItemService {
     List<ToDoItem> getAllTodoItem();
 
-    ToDoItem addTodoItem(ToDoItem toDoItem);
+    ToDoItem addToDoItem(ToDoItem toDoItem);
 }
