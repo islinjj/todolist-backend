@@ -22,4 +22,9 @@ public class ToDoItemServiceImpl implements ToDoItemService {
     public List<ToDoItem> getAllTodoItem() {
         return toDoItemRepository.findAll();
     }
+
+    @Override
+    public ToDoItem addTodoItem() {
+        return null;
+    }
 }
