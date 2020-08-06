@@ -40,7 +40,7 @@ public class ToDoListServiceTest {
     }
 
     @Test
-    void should_return_size_1_when_find_all_to_do_item_given_one_todo_item() {
+    void should_return_size_1_when_find_all_to_do_item_given_1_todo_item() {
         //given
         ToDoItem toDoItem = new ToDoItem(1, false, "vicky");
         ArrayList<ToDoItem> toDoItems = new ArrayList<>();
@@ -55,7 +55,7 @@ public class ToDoListServiceTest {
     }
 
     @Test
-    void should_return_id_1_when_add_to_do_item_given_one_todo_item() {
+    void should_return_id_1_when_add_to_do_item_given_1_todo_item() {
         //given
         ToDoItem newItem = new ToDoItem( false, "vicky");
         ToDoItem compareItem = new ToDoItem(1, false, "vicky");
