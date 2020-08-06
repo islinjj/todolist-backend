@@ -1,6 +1,7 @@
 package com.ita.todolist.mapper;
 
-import com.ita.todolist.dto.ToDoItemRequest;
+import com.ita.todolist.dto.ToDoItemRequestDto;
+import com.ita.todolist.dto.ToDoItemResponseDto;
 import com.ita.todolist.entity.ToDoItem;
 
 /**
@@ -9,7 +10,11 @@ import com.ita.todolist.entity.ToDoItem;
  * @Version 1.0
  */
 public class ToDoItemMapper {
-    public static ToDoItem requestToEntity(ToDoItemRequest toDoItemRequest) {
+    public static ToDoItem requestToEntity(ToDoItemRequestDto toDoItemRequest) {
         return new ToDoItem(toDoItemRequest.getStatus(), toDoItemRequest.getContent());
+    }
+
+    public static ToDoItemResponseDto entityToResponseDto(ToDoItem toDoItem) {
+        return new ToDoItemResponseDto(toDoItem.getStatus(), toDoItem.getContent());
     }
 }
