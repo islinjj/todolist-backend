@@ -42,4 +42,9 @@ public class ToDoItem {
     public void setContent(String content) {
         this.content = content;
     }
+
+    public ToDoItem(Boolean status, String content) {
+        this.status = status;
+        this.content = content;
+    }
 }

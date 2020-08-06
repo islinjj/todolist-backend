@@ -24,7 +24,8 @@ public class ToDoItemServiceImpl implements ToDoItemService {
     }
 
     @Override
-    public ToDoItem addTodoItem() {
-        return null;
+    public ToDoItem addTodoItem(ToDoItem toDoItem) {
+        ToDoItem returnItem = toDoItemRepository.save(toDoItem);
+        return returnItem;
     }
 }
