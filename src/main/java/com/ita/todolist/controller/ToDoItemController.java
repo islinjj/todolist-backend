@@ -26,8 +26,15 @@ public class ToDoItemController {
     }
 
     @PutMapping(path = "/{id}")
-    public ToDoItemResponseDto updateToDoItem(@PathVariable int id ,@RequestBody ToDoItem toDoItem){
+    public ToDoItemResponseDto updateToDoItem(@PathVariable int id, @RequestBody ToDoItem toDoItem) {
         ToDoItem newToDoItem = toDoItemService.updateToDoItem(toDoItem);
         return ToDoItemMapper.entityToResponseDto(newToDoItem);
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public List<ToDoItemResponseDto> deleteToDoItem(@PathVariable int id) {
+        toDoItemService.deleteToDoItemById(id);
+        List<ToDoItem> allTodoItem = toDoItemService.getAllTodoItem();
+        return ToDoItemMapper.entitiesToResponseDtos(allTodoItem);
     }
 }
