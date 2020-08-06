@@ -15,4 +15,6 @@ public interface ToDoItemService {
     ToDoItem addToDoItem(ToDoItem toDoItem);
 
     void deleteToDoItemById(Integer toDoItemId);
+
+    ToDoItem updateToDoItem(ToDoItem toDoItem);
 }

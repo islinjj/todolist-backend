@@ -80,4 +80,16 @@ public class ToDoListServiceTest {
         //then
         verify(toDoItemRepository).deleteById(toDoItemId);
     }
+
+    @Test
+    void should_return_true_when_update_todo_item_given_todo_item_with_status_true() {
+        //given
+        ToDoItem toDoItem = new ToDoItem( 1,true, "vicky");
+
+        //when
+        ToDoItem newToDoItem = toDoListService.updateToDoItem(toDoItem);
+
+        //then
+        Assertions.assertTrue(newToDoItem.getStatus());
+    }
 }
