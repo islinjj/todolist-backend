@@ -6,6 +6,9 @@ import com.ita.todolist.entity.ToDoItem;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @Author LINVI7
  * @Date 8/6/2020 8:22 PM
@@ -36,5 +39,19 @@ public class ToDoItemMapperTest {
         //then
         Assertions.assertEquals(toDoItemResponseDto.getContent(),toDoItem.getContent());
         Assertions.assertEquals(toDoItemResponseDto.getStatus(),toDoItem.getStatus());
+    }
+
+    @Test
+    void should_return_size_2_when_entities_map_to_dtos_given_2_entity(){
+        //given
+        ToDoItem toDoItem2 = new ToDoItem(1,false,"vicky");
+        ToDoItem toDoItem1 = new ToDoItem(1,false,"vicky");
+        ArrayList<ToDoItem> toDoItems = new ArrayList<>();
+        toDoItems.add(toDoItem2);
+        toDoItems.add(toDoItem1);
+        //when
+        List<ToDoItemResponseDto> toDoItemResponseDtos = ToDoItemMapper.entitiesToResponseDtos(toDoItems);
+        //then
+        Assertions.assertEquals(2,toDoItemResponseDtos.size());
     }
 }
