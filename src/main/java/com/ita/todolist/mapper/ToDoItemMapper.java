@@ -10,6 +10,6 @@ import com.ita.todolist.entity.ToDoItem;
  */
 public class ToDoItemMapper {
     public static ToDoItem requestToEntity(ToDoItemRequest toDoItemRequest) {
-        return null;
+        return new ToDoItem(toDoItemRequest.getStatus(), toDoItemRequest.getContent());
     }
 }
