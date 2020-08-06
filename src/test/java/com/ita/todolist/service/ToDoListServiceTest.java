@@ -56,15 +56,16 @@ public class ToDoListServiceTest {
     }
 
     @Test
-    void should_return_size_1_when_add_to_do_item_given_one_todo_item() {
+    void should_return_id_1_when_add_to_do_item_given_one_todo_item() {
         //given
-        ToDoItem toDoItem = new ToDoItem(1, false, "vicky");
-        when(toDoItemRepository.findById(1)).thenReturn(Optional.of(toDoItem));
+        ToDoItem oldItem = new ToDoItem( false, "vicky");
+        ToDoItem compareItem = new ToDoItem(1, false, "vicky");
+        when(toDoItemRepository.save(oldItem)).thenReturn(compareItem);
 
         //when
-        ToDoItem todoItem= toDoListService.addTodoItem();
+        ToDoItem returnItem= toDoListService.addTodoItem(oldItem);
 
         //then
-        Assertions.assertEquals(1,todoItem.getId());
+        Assertions.assertEquals(1,returnItem.getId());
     }
 }
