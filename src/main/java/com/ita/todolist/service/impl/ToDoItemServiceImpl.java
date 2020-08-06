@@ -35,6 +35,6 @@ public class ToDoItemServiceImpl implements ToDoItemService {
 
     @Override
     public ToDoItem updateToDoItem(ToDoItem toDoItem) {
-        return null;
+        return toDoItemRepository.save(toDoItem);
     }
 }
