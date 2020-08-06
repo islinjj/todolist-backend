@@ -15,6 +15,6 @@ public class ToDoItemMapper {
     }
 
     public static ToDoItemResponseDto entityToResponseDto(ToDoItem toDoItem) {
-        return new ToDoItemResponseDto(toDoItem.getStatus(), toDoItem.getContent());
+        return new ToDoItemResponseDto(toDoItem.getId(),toDoItem.getStatus(), toDoItem.getContent());
     }
 }
