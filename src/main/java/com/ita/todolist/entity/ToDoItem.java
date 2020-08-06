@@ -1,11 +1,17 @@
 package com.ita.todolist.entity;
 
+import javax.persistence.*;
+
 /**
  * @Author LINVI7
  * @Date 8/6/2020 6:55 PM
  * @Version 1.0
  */
+@Entity
+@Table(name = "todoitem")
 public class ToDoItem {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Boolean status;
     private String content;
