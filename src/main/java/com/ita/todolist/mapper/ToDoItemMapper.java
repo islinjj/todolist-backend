@@ -1,0 +1,15 @@
+package com.ita.todolist.mapper;
+
+import com.ita.todolist.dto.ToDoItemRequest;
+import com.ita.todolist.entity.ToDoItem;
+
+/**
+ * @Author LINVI7
+ * @Date 8/6/2020 8:29 PM
+ * @Version 1.0
+ */
+public class ToDoItemMapper {
+    public static ToDoItem requestToEntity(ToDoItemRequest toDoItemRequest) {
+        return null;
+    }
+}
