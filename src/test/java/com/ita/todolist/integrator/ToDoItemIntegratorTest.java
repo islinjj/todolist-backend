@@ -77,4 +77,16 @@ public class ToDoItemIntegratorTest {
         mockMvc.perform(MockMvcRequestBuilders.put(String.format("/todos/%d", toDoItem.getId())).contentType(MediaType.APPLICATION_JSON).content(updateToDoItemJson));
         Assertions.assertTrue(toDoItem.getStatus());
     }
+
+    @Test
+    void should_return_0_when_delete_todo_item_given_id() throws Exception {
+        String toDoItemJson = "{\n" +
+                "    \"content\":\"finish homewrok\",\n" +
+                "    \"status\": false\n" +
+                "}";
+        mockMvc.perform(MockMvcRequestBuilders.post("/todos").contentType(MediaType.APPLICATION_JSON).content(toDoItemJson));
+        ToDoItem toDoItem = toDoItemRepository.findAll().get(0);
+        mockMvc.perform(MockMvcRequestBuilders.delete(String.format("/todos/%d", toDoItem.getId())));
+        Assertions.assertEquals(0,toDoItemRepository.findAll().size());
+    }
 }
