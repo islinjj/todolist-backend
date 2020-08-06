@@ -50,4 +50,15 @@ public class ToDoItemIntegratorTest {
         LinkedList<ToDoItem> todoItems = JSON.parseObject(contentAsString, LinkedList.class);
         Assertions.assertEquals(1,todoItems.size());
     }
+
+    @Test
+    void should_return_1_to_do_item_when_add_one_todo_item_given_1_to_do_item() throws Exception {
+        String toDoItemJson = "{\n" +
+                "    \"content\":\"finish homewrok\",\n" +
+                "    \"status\": false\n" +
+                "}";
+        mockMvc.perform(MockMvcRequestBuilders.post("/todos").contentType(MediaType.APPLICATION_JSON).content(toDoItemJson));
+        ToDoItem toDoItem = toDoItemRepository.findAll().get(0);
+        Assertions.assertEquals("finish homewrok",toDoItem.getContent());
+    }
 }
