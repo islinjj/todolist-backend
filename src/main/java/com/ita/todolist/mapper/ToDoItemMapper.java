@@ -4,6 +4,9 @@ import com.ita.todolist.dto.ToDoItemRequestDto;
 import com.ita.todolist.dto.ToDoItemResponseDto;
 import com.ita.todolist.entity.ToDoItem;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * @Author LINVI7
  * @Date 8/6/2020 8:29 PM
@@ -17,4 +20,8 @@ public class ToDoItemMapper {
     public static ToDoItemResponseDto entityToResponseDto(ToDoItem toDoItem) {
         return new ToDoItemResponseDto(toDoItem.getId(),toDoItem.getStatus(), toDoItem.getContent());
     }
+    public static List<ToDoItemResponseDto> entitiesToResponseDtos(List<ToDoItem> toDoItems) {
+        return toDoItems.stream().map(toDoItem -> entityToResponseDto(toDoItem)).collect(Collectors.toList());
+    }
+
 }
