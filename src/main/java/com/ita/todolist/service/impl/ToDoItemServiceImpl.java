@@ -31,5 +31,6 @@ public class ToDoItemServiceImpl implements ToDoItemService {
 
     @Override
     public void deleteToDoItemById(Integer toDoItemId) {
+        toDoItemRepository.deleteById(toDoItemId);
     }
 }
