@@ -61,4 +61,20 @@ public class ToDoItemIntegratorTest {
         ToDoItem toDoItem = toDoItemRepository.findAll().get(0);
         Assertions.assertEquals("finish homewrok",toDoItem.getContent());
     }
+
+    @Test
+    void should_return_1_updated_to_do_item_when_update_one_todo_item_given_1_to_do_item_and_id() throws Exception {
+        String oldToDoItemJson = "{\n" +
+                "    \"content\":\"finish homewrok\",\n" +
+                "    \"status\": false\n" +
+                "}";
+        mockMvc.perform(MockMvcRequestBuilders.post("/todos").contentType(MediaType.APPLICATION_JSON).content(oldToDoItemJson));
+        String updateToDoItemJson = "{\n" +
+                "    \"content\":\"finish homewrok\",\n" +
+                "    \"status\": true\n" +
+                "}";
+        ToDoItem toDoItem = toDoItemRepository.findAll().get(0);
+        mockMvc.perform(MockMvcRequestBuilders.put(String.format("/todos/%d", toDoItem.getId())).contentType(MediaType.APPLICATION_JSON).content(updateToDoItemJson));
+        Assertions.assertTrue(toDoItem.getStatus());
+    }
 }
