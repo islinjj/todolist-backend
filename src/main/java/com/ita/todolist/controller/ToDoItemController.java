@@ -1,5 +1,6 @@
 package com.ita.todolist.controller;
 
+import com.ita.todolist.dto.ToDoItemRequestDto;
 import com.ita.todolist.dto.ToDoItemResponseDto;
 import com.ita.todolist.entity.ToDoItem;
 import com.ita.todolist.mapper.ToDoItemMapper;
@@ -34,6 +35,14 @@ public class ToDoItemController {
     @DeleteMapping(path = "/{id}")
     public List<ToDoItemResponseDto> deleteToDoItem(@PathVariable int id) {
         toDoItemService.deleteToDoItemById(id);
+        List<ToDoItem> allTodoItem = toDoItemService.getAllTodoItem();
+        return ToDoItemMapper.entitiesToResponseDtos(allTodoItem);
+    }
+
+    @PostMapping
+    public List<ToDoItemResponseDto> addToDoItem(@RequestBody ToDoItemRequestDto toDoItemRequestDto) {
+        ToDoItem toDoItem = ToDoItemMapper.requestToEntity(toDoItemRequestDto);
+        toDoItemService.addToDoItem(toDoItem);
         List<ToDoItem> allTodoItem = toDoItemService.getAllTodoItem();
         return ToDoItemMapper.entitiesToResponseDtos(allTodoItem);
     }
