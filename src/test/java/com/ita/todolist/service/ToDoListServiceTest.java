@@ -38,4 +38,19 @@ public class ToDoListServiceTest {
         //then
         Assertions.assertEquals(0,todoItems.size());
     }
+
+    @Test
+    void should_return_size_1_when_find_all_to_do_item_given_one_todo_item() {
+        //given
+        ToDoItem toDoItem = new ToDoItem(1, false, "vicky");
+        ArrayList<ToDoItem> toDoItems = new ArrayList<>();
+        toDoItems.add(toDoItem);
+        when(toDoItemRepository.findAll()).thenReturn(toDoItems);
+
+        //when
+        List<ToDoItem> todoItems= toDoListService.getAllTodoItem();
+
+        //then
+        Assertions.assertEquals(1,todoItems.size());
+    }
 }
