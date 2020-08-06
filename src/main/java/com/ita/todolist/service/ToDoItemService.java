@@ -13,4 +13,6 @@ public interface ToDoItemService {
     List<ToDoItem> getAllTodoItem();
 
     ToDoItem addToDoItem(ToDoItem toDoItem);
+
+    void deleteToDoItemById(Integer toDoItemId);
 }

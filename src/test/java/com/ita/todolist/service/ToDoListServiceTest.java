@@ -12,6 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
@@ -66,5 +67,17 @@ public class ToDoListServiceTest {
 
         //then
         Assertions.assertEquals(1,item.getId());
+    }
+
+    @Test
+    void should_execution_delete_method_when_delete_to_do_item_given_item_id() {
+        //given
+        Integer toDoItemId = 1;
+
+        //when
+        toDoListService.deleteToDoItemById(toDoItemId);
+
+        //then
+        verify(toDoItemRepository).deleteById(toDoItemId);
     }
 }

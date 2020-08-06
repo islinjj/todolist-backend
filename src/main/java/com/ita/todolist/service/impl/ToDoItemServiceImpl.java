@@ -28,4 +28,8 @@ public class ToDoItemServiceImpl implements ToDoItemService {
         ToDoItem item = toDoItemRepository.save(toDoItem);
         return item;
     }
+
+    @Override
+    public void deleteToDoItemById(Integer toDoItemId) {
+    }
 }
